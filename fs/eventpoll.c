@@ -1628,7 +1628,7 @@ SYSCALL_DEFINE4(epoll_ctl, int, epfd, int, op, int, fd,
 
 	/* The target file descriptor must support poll */
 	error = -EPERM;
-	if (!tfile->f_op || !tfile->f_op->poll)
+	if (!tfile->f_op->poll)
 		goto error_tgt_fput;
 
 	/*
